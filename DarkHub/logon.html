@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="styles/reset.css" rel="stylesheet"/>
+        <link href="styles/sign.css" rel="stylesheet"/>
+        <script type="text/javascript" src="scripts/sign.js" ></script>
+        <!--
+            登录界面：userName用户名，userPass密码，userIcon在输入用户名时修改img，宽高保持行间样式默认值(64%)
+            行为：登录按钮：signIn
+                 注册按钮：signUp
+                 找回密码：链接href
+            其余样式待补充
+        -->
+    </head>
+
+    <body>
+        <header>黑作坊</header>
+
+        <section>
+                <div id="signIn_Up">
+                    <div id="userIcon"> 
+                        <img src="imags/usericon.png" width="64px" height="64px"/>
+                    </div>
+                    <div class="box" id="user_input">
+                        <input type="text" id="userName" placeholder="用户名"/>
+                    </div>
+                    <div class="box" id="pass_input">
+                        <input type="password" id="userPass" placeholder="密码"/>
+                    </div>
+                    <button id="signIn" >登录</button>
+                    <button id="signUp" >立即注册</button>
+                    <div id="forgetPass" style="text-align: center;font-size: 0.8em;margin-top: 5px;">
+                        <a href="">找回密码</a>
+                    </div>
+                </div>
+        </section>   
+
+    </body>
+
+</html>
