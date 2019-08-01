@@ -1,5 +1,3 @@
-document.write("<script src='./jquery.js></script>");
-
 // function getUserTextInfo() {
 //     var username;
 //     var userpass;
@@ -10,9 +8,9 @@ document.write("<script src='./jquery.js></script>");
 //     alert('hah');
 // }
 
-// function getUserIcon() {//登录时头像，获取username时马上显示
-    
-// }
+function getUserIcon() {//登录时头像，获取username时马上显示
+    //alert("the username has changed to " + $('#userName').val());
+}
 
 // function signIn(){
 //     alert("signin");
@@ -21,9 +19,11 @@ document.write("<script src='./jquery.js></script>");
 //     alert("signup");
 // }
 
+
+
 function signIn(){
-    let username = $("#userName").value();
-    let password = $("#userPass").value();
+    let username = $("#userName").val();
+    let password = $("#userPass").val();
     alert(username + ' ' + password);
 }
 function signUp(){

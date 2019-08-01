@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <link href="styles/reset.css" rel="stylesheet"/>
         <link href="styles/sign.css" rel="stylesheet"/>
+        <script src="./scripts/jquery.js"></script>
         <script type="text/javascript" src="scripts/sign.js" ></script>
         <!--
             登录界面：userName用户名，userPass密码，userIcon在输入用户名时修改img，宽高保持行间样式默认值(64%)
@@ -23,7 +24,7 @@
                         <img src="imags/usericon.png" width="64px" height="64px"/>
                     </div>
                     <div class="box" id="user_input">
-                        <input type="text" id="userName" placeholder="用户名"/>
+                        <input type="text" id="userName" placeholder="用户名" oninput="getUserIcon()"/>
                     </div>
                     <div class="box" id="pass_input">
                         <input type="password" id="userPass" placeholder="密码"/>
