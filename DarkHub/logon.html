@@ -28,8 +28,8 @@
                     <div class="box" id="pass_input">
                         <input type="password" id="userPass" placeholder="密码"/>
                     </div>
-                    <button id="signIn" >登录</button>
-                    <button id="signUp" >立即注册</button>
+                    <button id="signIn" onclick="signIn()">登录</button>
+                    <button id="signUp" onclick="signUp()">立即注册</button>
                     <div id="forgetPass" style="text-align: center;font-size: 0.8em;margin-top: 5px;">
                         <a href="">找回密码</a>
                     </div>
@@ -37,5 +37,12 @@
         </section>   
 
     </body>
-
+    <script>
+        function signIn(){
+            alert("signin");
+        }
+        function signup(){
+            alert("signup");
+        }
+    </script>
 </html>
