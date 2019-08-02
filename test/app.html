@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>head</p>
+    <iframe src="./test1.html" frameborder="0" id = 'inhtml'></iframe>
+    <button onclick="change()">change</button>
+    <p>tail</p>
+</body>
+<script>
+
+    function re_to_path(url){
+        var img = new Image();
+        img.src = url;
+        url = img.src;
+        return url;
+    }
+    function change(){
+        console.log(document.getElementById("inhtml").src);
+        if(document.getElementById("inhtml").src == re_to_path('./test1.html')){
+            console.log('true');
+            document.getElementById("inhtml").src = re_to_path('./test2.html')
+        }
+        else{
+            console.log('false');
+            document.getElementById('inhtml').src = re_to_path('./test1.html')
+        }
+    }
+
+</script>
+</html>
