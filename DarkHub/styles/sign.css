@@ -45,13 +45,24 @@ button#signUp{
     height: 30px;
     width: 200px;
 }
-
+button#back{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    outline: none;/*选中时无边框光晕*/
+    border-radius: 5px;
+    background: tomato;
+    color: aliceblue;
+    height: 30px;
+    width: 200px;
+}
 input#userName {
     background-image: url(../imags/user.png);
     background-position: right;
     background-repeat: no-repeat;
 }
-input#userPass{
+input#userPass,input#userPassConfirm{
     background-image: url(../imags/password.png);
     background-position: right;
     background-repeat: no-repeat;
