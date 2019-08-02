@@ -13,15 +13,15 @@
                 <div>
                     <span class="nav_icon">DarkHub</span>
                 </div>
-                <div>
+                <div id = 'div_course' onclick = 'div_course_click()'>
                     <span class="nav_item"><a id="course" href="#">课程</a></span>
                 </div>
 
-                <div>
+                <div id = 'div_class'>
                     <span class="nav_item"><a href="#">班级</a></span>
                 </div>
 
-                <div>
+                <div id = 'div_join'>
                     <span class="nav_item"><a href="#">加入我们</a></span>
                 </div>
                 
@@ -34,5 +34,51 @@
         </div>
         
     </body>
+    <script>
+        function create_div(left,top,width,height,id){
+            let div = document.createElement("div");
+            div.id  = id;
+            // console.log(left);
+            // console.log(top);
+            // console.log(width);
+            // console.log(height);
+            //div.style = 'width:'+width+';height:'+height+";"//"offsetLeft:"+left+";"+"offsetTop:"+top+";";
+            div.style.position = 'absolute';
+            div.style.left = left + 'px';
+            div.style.top  = top + 'px';
+            div.style.width = width + 'px';
+            div.style.height = height + 'px';
+            div.style.textAlign = 'center';
 
+            div.style.background = '#50A0C0';
+
+            //div.setAttribute("class","nav_item");
+            // console.log(div.style.left);
+            // console.log(div.style.top);
+            // console.log(div.style.width);
+            // console.log(div.style.height);
+            document.body.appendChild(div);
+            //console.log('created' + left);
+        }
+        function div_course_click(){
+            if(!document.getElementById('div_course')){
+                let div_course = document.getElementById("div_course");
+                let left = div_course.offsetLeft;
+                let top = div_course.offsetTop+div_course.offsetHeight;
+                let width = div_course.offsetWidth;
+                let height = div_course.offsetHeight * 2;
+                create_div(left,top,width,height,"div_courses");
+                document.getElementById('div_courses').innerHTML = `
+                    <br>
+                    <span class = "nav_item" style = "background-color : #50A0C0;font-size:16px;" align="center">
+                        <a href = "#">已完成</a>
+                    </span><br>
+                    <span class = "nav_item" style = "background-color : #50A0C0;font-size:16px" align="center">
+                        <a href = "#">未完成</a>
+                    </span>
+                `
+            }
+        }
+
+    </script>
 </html>
