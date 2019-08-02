@@ -61,7 +61,7 @@ server.on('request',function(request,response){
         response.writeHead(200,{'content-type':'text/html'});
         response.end('favicon.ico');
     }
-    else if(url === 'logon.html' || url === 'logon'){
+    else if(url === '/logon.html' || url === '/logon'){
         fs.readFile('./logon.html','utf-8',function(err,data){
             if(err){
                 console.log('error when accessing ' + url);
@@ -73,7 +73,7 @@ server.on('request',function(request,response){
                 response.end(data);
             }
         })
-    }else if(url === 'signup.html' || url == 'signup'){
+    }else if(url === '/signup.html' || url == '/signup'){
         fs.readFile('./signup.html','utf-8',function(err,data){
             if(err){
                 console.log('error when accessing ' + url);

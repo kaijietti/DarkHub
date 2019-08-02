@@ -18,13 +18,13 @@
                         <img src="imags/usericon.png" width="64px" height="64px" id='usericon'/>
                     </div>
                     <div class="box" id="user_input">
-                        <input type="text" id="userName" placeholder="用户名" oninput="getUserIcon()"/>
+                        <input type="text" id="userName" placeholder="用户名" oninput="getUserIcon()" onkeyup="if(event.keyCode==13){signUp()}"/>
                     </div>
                     <div class="box" id="pass_input">
-                        <input type="password" id="userPass" placeholder="密码"/>
+                        <input type="password" id="userPass" placeholder="密码" onkeyup="if(event.keyCode==13){signUp()}"/>
                     </div>
                     <div class="box" id="pass_confirm">
-                        <input type="password" id="userPassConfirm" placeholder="确认密码"/>
+                        <input type="password" id="userPassConfirm" placeholder="确认密码" onkeyup="if(event.keyCode==13){signUp()}"/>
                     </div>
                     <button id="signUp" onclick="signUp()">注册</button>
                     <!-- <button id="back" onclick="window.location.href='./logon.html'">返回</button> -->

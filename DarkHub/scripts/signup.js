@@ -23,6 +23,7 @@ function signUp(){
     let username = $('#userName').val();
     let password = $('#userPass').val();
     let confirm = $('#userPassConfirm').val();
+    if(!username || !password || !confirm) return;
     if(password != confirm){
         alert('两次输入的密码不正确')
         reset();

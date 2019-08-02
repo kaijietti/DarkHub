@@ -23,13 +23,14 @@ function getUserIcon() {//登录时头像，获取username时马上显示
 function signIn(){
     let username = $("#userName").val();
     let password = $("#userPass").val();
+    if(!username || !password) return;
     let sql_pattern = /select|update|delete|truncate|join|union|exec|insert|drop|count|’|"|;|>|<|%/i;
     if(sql_pattern.test(username) || sql_pattern.test(password)){
         alert('Wrong input cannot be accepted.');
         return;
     }else{
         alert(username + ' ' + password + 'is waiting to post.');
-        let loginSuccess = true;
+        let loginSuccess = false;
         // post to : ...
         /*
             //post(use ajax)

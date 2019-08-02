@@ -24,10 +24,10 @@
                         <img src="imags/usericon.png" width="64px" height="64px" id='usericon'/>
                     </div>
                     <div class="box" id="user_input">
-                        <input type="text" id="userName" placeholder="用户名" oninput="getUserIcon()"/>
+                        <input type="text" id="userName" placeholder="用户名" oninput="getUserIcon()" onkeyup="if(event.keyCode==13){signIn()}"/>
                     </div>
                     <div class="box" id="pass_input">
-                        <input type="password" id="userPass" placeholder="密码"/>
+                        <input type="password" id="userPass" placeholder="密码" onkeyup="if(event.keyCode==13){signIn()}"/>
                     </div>
                     <button id="signIn" onclick="signIn()">登录</button>
                     <button id="signUp" onclick="signUp()">立即注册</button>
