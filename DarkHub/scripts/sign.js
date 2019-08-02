@@ -29,7 +29,7 @@ function signIn(){
         return;
     }else{
         alert(username + ' ' + password + 'is waiting to post.');
-        let loginSuccess = false;
+        let loginSuccess = true;
         // post to : ...
         /*
             //post(use ajax)
@@ -59,6 +59,5 @@ function signIn(){
     }
 }
 function signUp(){
-    alert("not completed.") //goto signup.html
-    // window.location.href = './signup.html';
+    window.location.href = './signup.html';
 }
