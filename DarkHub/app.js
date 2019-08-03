@@ -101,6 +101,22 @@ server.on('request',function(request,response){
         })
     }
     // add 'else if' if more html files are added.
+
+    else if(/^\/(\S)+.html$/.test(url)){
+        let htmlname = url.substring(1);
+        fs.readFile('./' + htmlname,'utf-8',function(err,data){
+            if(err){
+                console.log('error when accessing ' + url);
+                response.writeHead(404,{'content-type':'text/html'});
+                response.end('<h1>404-ERROR</h1>');
+            }else{
+                console.log('accessing ' + url);
+                response.writeHead(200,{'content-type':'text/html'});
+                response.end(data);
+            }
+        });
+    }
+
     else{
         console.log(url + ' ///: not completed');
         response.writeHead(502,{'content-type':'text/html'});
