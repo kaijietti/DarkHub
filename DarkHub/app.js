@@ -27,7 +27,7 @@ server.on('request',function(request,response){
                 response.end(data);
             }
         })
-    }else if(url === '/index'){
+    }else if(url === '/index' || url === '/index.html'){
         fs.readFile('./index.html','utf-8',function(err,data){
             if(err){
                 console.log('err when accessing ' + url);

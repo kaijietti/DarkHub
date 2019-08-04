@@ -82,7 +82,7 @@ function signIn(){
         })
         */
         if(loginSuccess){
-            let userhome_url = './index';
+            let userhome_url = './index.html';
             // add coodies here:
             addcookies(username,1);
             window.location.href = userhome_url;
@@ -94,5 +94,5 @@ function signIn(){
     }
 }
 function signUp(){
-    window.location.href = './signup';
+    window.location.href = './signup.html';
 }
