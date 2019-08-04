@@ -28,6 +28,47 @@ server.on('request',function(request,response){
             }
         })
     }
+    else if(/^\/imags\/user\/(\S)*.png$/.test(url)){
+        let username = url.substring(12);
+        fs.readFile('./imags/users/'+username,'binary',function(err,data){
+            if(err){
+                console.log('err when accessing ' + url + ', put default instand.');
+                fs.readFile('./imags/usericon.png','binary',function(err,data){
+                    if(err){
+                        console.log('err when accessing default icon.');
+                        response.writeHead(404,{'content-type':'text/html'});
+                        response.end('404-ERROR');
+                    }else{
+                        console.log('accessing ./imags/usericon.png');
+                        response.writeHead(200,{'content-type':'image/png'});
+                        response.write(data,'binary');
+                        response.end();
+                    }
+                })
+            }else{
+                console.log('accessing ' + url);
+                response.writeHead(200,{'content-type':'image/png'});
+                response.write(data,'binary');
+                response.end();
+            }
+        })
+    }
+    else if(/^\/imags\/(\S)+.(\S)+$/.test(url)){
+        let imgname = url.substring(7);
+        fs.readFile('./imags/' + imgname,'binary',function(err,data){
+            if(err){
+                console.log('error when accessing ' + url);
+                response.writeHead(404,{'content-type':'text/html'});
+                response.end('<h1>404-ERROR</h1>');
+            }else{
+                console.log('accessing ' + url);
+                response.writeHead(200,{'content-type':'image/png'});
+                response.write(data,'binary');
+                response.end();
+            }
+        })
+    }
+   
     else if(/^\/styles\/([a-z]|[A-Z]|[0-9])+.css$/.test(url)){
         let cssname = url.substring(8);
         console.log('cssname = '+  cssname);
@@ -43,21 +84,8 @@ server.on('request',function(request,response){
                 response.end(data);
             }
         })
-    }else if(/^\/imags\/(\S)+.(\S)+$/.test(url)){
-        let imgname = url.substring(7);
-        fs.readFile('./imags/' + imgname,'binary',function(err,data){
-            if(err){
-                console.log('error shen accessing ' + url);
-                response.writeHead(404,{'content-type':'text/html'});
-                response.end('<h1>404-ERROR</h1>');
-            }else{
-                console.log('accessing ' + url);
-                response.writeHead(200,{'content-type':'image/png'});
-                response.write(data,'binary');
-                response.end();
-            }
-        })
-    }else if(url === '/favicon.ico'){ // do nothing.
+    }
+    else if(url === '/favicon.ico'){ // do nothing.
         response.writeHead(200,{'content-type':'text/html'});
         response.end('favicon.ico');
     }
