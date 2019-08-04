@@ -81,7 +81,7 @@ server.on('request',function(request,response){
         })
     }
    
-    else if(/^\/styles\/([a-z]|[A-Z]|[0-9])+.css$/.test(url)){
+    else if(/^\/styles\/([a-z]|[A-Z]|[0-9]|_)+.css$/.test(url)){
         let cssname = url.substring(8);
         console.log('cssname = '+  cssname);
         fs.readFile('./styles/'+cssname,'utf-8',function(err,data){
@@ -141,7 +141,19 @@ server.on('request',function(request,response){
         })
     }
     // add 'else if' if more html files are added.
-
+    else if(url === '/contect_us' || url == '/contect_us.html'){
+        fs.readFile('./contect_us.html','utf-8',function(err,data){
+            if(err){
+                console.log('error when accessing ' + url);
+                response.writeHead(404,{'content-type':'text/html'})
+                response.end('<h1>404-ERROR</h1>');
+            }else{
+                console.log('accessing ' + url);
+                response.writeHead(200,{'content-type':'text/html'});
+                response.end(data);
+            }
+        })
+    }
     else if(/^\/(\S)+.html$/.test(url)){
         let htmlname = url.substring(1);
         fs.readFile('./' + htmlname,'utf-8',function(err,data){
