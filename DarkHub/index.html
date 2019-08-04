@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link href="styles/index.css" rel="stylesheet"/>
+        <script src = "./scripts/index.js"></script>
     </head>
     <body>
         <div id="nav">
@@ -66,7 +67,7 @@
                                     <img src="imags/usericon.png" width="40px" height="40px"/>
                                 </div>
                             </span>
-                            <span class="back">
+                            <span class="back" id = 'username_text'>
                                 usernsame
                             </span>
                         </span>
@@ -84,7 +85,7 @@
                     </ul>
                     <ul>
                         <li>
-                            <a href="#" class='three-d'>
+                            <a href="#" class='three-d' onclick='logout()'>
                                 Log out
                                 <span class = 'box'>
                                     <span class = 'front'>Log out</span>
@@ -102,4 +103,9 @@
             <a href="">联系我们</a>
         </footer>
     </body>
+    <script>
+        window.onload = () => {
+            document.getElementById('username_text').innerHTML = login();
+        }
+    </script>
 </html>

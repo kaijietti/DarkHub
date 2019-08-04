@@ -15,12 +15,24 @@ server.listen(port,function(){
 server.on('request',function(request,response){
     var url = request.url;
 
-    if(url == '/'){
+    if(url === '/'){
         fs.readFile('./logon.html','utf-8',function(err,data){
             if(err){
                 console.log('error when accessing ' + url);
                 response.writeHead(404,{'content-type':'text/html'});
                 response.end('<h1>404-ERROR</h1>')
+            }else{
+                console.log('accessing ' + url);
+                response.writeHead(200,{'content-type':'text/html'});
+                response.end(data);
+            }
+        })
+    }else if(url === '/index'){
+        fs.readFile('./index.html','utf-8',function(err,data){
+            if(err){
+                console.log('err when accessing ' + url);
+                response.writeHead(404,{'content-type':'text/html'});
+                response.end('<h1>404-ERROR</h1>');
             }else{
                 console.log('accessing ' + url);
                 response.writeHead(200,{'content-type':'text/html'});

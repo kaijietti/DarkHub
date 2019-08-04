@@ -1,18 +1,8 @@
-// function getUserTextInfo() {
-//     var username;
-//     var userpass;
-
-//     username = document.getElementById('userName');
-//     userpass = document.getElementById('userPass');
-
-//     alert('hah');
-// }
 function addcookies(username,time){   //add cookies for a user
-    //time = 1 * 60 * 60 * 1000;  // 一小时超时时间
+
     var exp = new Date();
-    exp.setTime(exp.getTime() + time);
-    document.cookie = "username = " + username+';expires='+exp;
-    console.log('cookies for ' + username + ' written');
+    exp.setDate(exp.getDate() + time);
+    document.cookie = "username = " + username+';expires='+exp+";path=/";
 }
 
 function getCookie(username){
@@ -27,38 +17,41 @@ function getCookie(username){
             console.log(err);
         }
     }
-    return 'null';
+    return null;
 }
 
 function removecookie(username){
-    setCookie(username,-1);
+    addcookies(username,-1);
 }
 
 function removeAllCookie(){
-    var arr = document.cookie.split()
+    addcookies('fail',-1);
 }
 
+function getLoginedCookie(){
+    let arr = document.cookie.split(';');
+    try{
+        let arr2 = arr[0].split('=');
+        if((typeof arr2[1]) === undefined){
+            console.log(arr2[1]);
+            return null;
+        }
+        return arr2[1];
+    }catch(err){
+        console.log(err);
+    }
+    return null;
+}
+
+
 function getUserIcon() {//登录时头像，获取username时马上显示
-    //alert("the username has changed to " + $('#userName').val());
-    //suppose that the icon of a existed user stores in ../imags/users/username.png
-    // let username = $('#username').val();
-    // let url = '../imags/users/'+username+'.png';
-    // let fs = require('fs');
-    // if(!fs.exists(url)){
-    //     url = '../imags/usericon.png';
-    // }
-    // $('#usericon').src = url;
     let username = $('#userName').val();
     //console.log('changing username to '+ username);
     let url = '/imags/user/' + username + '.png';
     $('#usericon').attr('src',url);
-    // console.log(url);
-    // console.log($('usericon').attr('src'));
 }
 
 function signIn(){
-    // delete all the cookies that have been set:
-    //removeAllCookie();
 
     let username = $("#userName").val();
     let password = $("#userPass").val();
@@ -68,7 +61,6 @@ function signIn(){
         alert('Wrong input cannot be accepted.');
         return;
     }else{
-        alert(username + ' ' + password + 'is waiting to post.');
         let loginSuccess = true;
         // post to : ...
         /*
@@ -90,10 +82,10 @@ function signIn(){
         })
         */
         if(loginSuccess){
-            let userhome_url = 'about:black';
+            let userhome_url = './index';
             // add coodies here:
-            addcookies(username);
-            //window.location.href = userhome_url;
+            addcookies(username,1);
+            window.location.href = userhome_url;
             //console.log(getCookie(username));
         }
         else{
@@ -102,5 +94,5 @@ function signIn(){
     }
 }
 function signUp(){
-    window.location.href = './signup.html';
+    window.location.href = './signup';
 }
