@@ -50,7 +50,7 @@ body{
     top: 0;
     transform-style: preserve-3d;
     transform: translateZ(-25px);
-    transition: all 0.4s linear;
+    /*transition: all 0.4s linear;*//*加上会使得初次加载也有动画效果*/
 }
 
 .front, .back{
@@ -93,6 +93,21 @@ body{
     float: right;
 }
 
+/*.nav_menu > li:last-child .front{
+    display: flex;
+    align-items: center;
+}*/
+
+
+.user {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 42px;
+    height: 42px; 
+    border-radius: 50%;
+    border:1px solid white;
+}
+/*二级菜单*/
 .nav_menu ul li{
     list-style-type: none;
     width: 100%;
@@ -131,7 +146,7 @@ footer{
     bottom: 0px;
     color: #dedede;
     transform-style: preserve-3d;
-    transition: all .4s linear;
+    /*transition: all .4s linear;*/
     perspective: 80px;/*透视效果*/
     -webkit-perspective: 80px;
 }
