@@ -37,7 +37,7 @@ function login(){
     }catch(err){
         console.log(err);
     }
-    return 'd_username';
+    return '';
 }
 
 function logout(){

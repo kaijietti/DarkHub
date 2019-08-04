@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link href="styles/index.css" rel="stylesheet"/>
+        <script src="./scripts/jquery.js"></script>
         <script src = "./scripts/index.js"></script>
     </head>
     <body>
@@ -105,7 +106,13 @@
     </body>
     <script>
         window.onload = () => {
-            document.getElementById('username_text').innerHTML = login();
+            let username = login();
+            if(!username){
+                window.location.href = '/';
+            }
+            else{
+                document.getElementById('username_text').innerHTML = username;
+            }
         }
     </script>
 </html>
