@@ -50,7 +50,7 @@ body{
     top: 0;
     transform-style: preserve-3d;
     transform: translateZ(-25px);
-    /*transition: all 0.4s linear;*//*加上会使得初次加载也有动画效果*/
+    transition: all 0.4s linear;/*加上会使得初次加载也有动画效果*/
 }
 
 .front, .back{
