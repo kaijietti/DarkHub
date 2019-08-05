@@ -5,6 +5,7 @@
         <link href="styles/index.css" rel="stylesheet"/>
         <script src="./scripts/jquery.js"></script>
         <script src = "./scripts/index.js"></script>
+        <script src="./scripts/personalinfo.js"></script>
     </head>
     <body>
         <div id="nav">
@@ -75,7 +76,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="./personalinfo" class="three-d">
+                            <a href="#" class="three-d">
                                  个人信息
                                 <span class="box">
                                     <span class="front">个人信息</span>
@@ -99,7 +100,14 @@
             </ul>
 
         </div>
-
+        <!--add personal information here-->
+        <div>
+            <label for="username">Username:</label><input type="text" id = 'username' size = '20' disabled = 'true'><br>
+            <label for="sex">Sex:</label><input type="text" id = 'sex' size = '20'><br>
+            <label for="phone">Phone:</label><input type="text" id='phone' size = '20'><br>
+            <label for="address">Address:</label><input type="text" id = 'address' size = '100'><br>
+            <button onclick="changeInfo()">Change</button>
+        </div>
         <footer>
             <a href="/contect_us">联系我们</a>
         </footer>
@@ -112,6 +120,43 @@
             }
             else{
                 document.getElementById('username_text').innerHTML = username;
+                document.getElementById('username').innerHTML = username;
+                // post username and get its infomation:
+                // let url = '';
+                // $.ajax({
+                //     data:{
+                //         username:username
+                //     },
+                //     url:url,
+                //     type:'POST',
+                //     dataType:'text',
+                //     success:function(result){   //假设返回一个JSON字符串
+                //         let username = '';
+                //         let address = '';
+                //         let phone = '';
+                //         let sex = '';
+
+                //         var reg1 = new RegExp('&','g');
+                //         var reg2 = new RegExp('=','g');
+
+                //         result = '{' + result + '}';
+                //         result = result.replace(reg1,'","').replace(reg2,'":"');
+                //         parse_result = JSON.parse(result);
+
+                //         username = parse_result.username;
+                //         address = parse_result.address;
+                //         phone = parse_result.phone;
+                //         sex = parse_result.sex;
+
+                //         document.getElementById('username').innerHTML = username;
+                //         document.getElementById('address').innerHTML = address;
+                //         document.getElementById('phone').innerHTML = phone;
+                //         document.getElementById('sex').innerHTML = sex;
+                //     },
+                //     error:function(xhr,txtstatus,errthrow){
+                //         console.log(errthrow);
+                //     }
+                // })
             }
         }
     </script>

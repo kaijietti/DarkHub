@@ -39,6 +39,18 @@ server.on('request',function(request,response){
                 response.end(data);
             }
         })
+    }else if(url === '/personalinfo' || url === '/personalinfo.html'){
+        fs.readFile('./personalinfo.html','utf-8',function(err,data){
+            if(err){
+                console.log('err when accessing ' + url);
+                response.writeHead(404,{'content-type':'text/html'});
+                response.end('<h1>404-ERROR</h1>');
+            }else{
+                console.log('accessing url');
+                response.writeHead(200,{'content-type':'text/html'});
+                response.end(data);
+            }
+        })
     }
     else if(/^\/imags\/user\/(\S)*.png$/.test(url)){
         let username = url.substring(12);
@@ -172,6 +184,6 @@ server.on('request',function(request,response){
     else{
         console.log(url + ' ///: not completed');
         response.writeHead(502,{'content-type':'text/html'});
-        response.end('not completed');
+        response.end('<h1>not completed</h1>');
     }
 })
