@@ -108,7 +108,6 @@ function Login(){
   
   if(postresult){
     setCookie(username,1);
-    alert('Success ' + username + ' ' + password);
     window.location.href = './index'
   }else{
     alert('Failed. Wrong username or password.')
