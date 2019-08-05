@@ -81,6 +81,9 @@ server.on('request',function(request,response){
       }
     })
   }
+  else if(url === '/favicon.ico'){
+    callBackError(url,err,response);
+  }
   else{
     let htmlname = url.substring(1);
     fs.readFile('./'+htmlname+'.html','utf-8',function(err,data){
