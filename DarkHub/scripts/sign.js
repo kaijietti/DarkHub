@@ -76,6 +76,16 @@ function setCookie(username,time){
   document.cookie = 'username='+username+';path=/;expires='+exp;
 }
 
+function getCookie(){
+  let arr = document.cookie.split(';');
+  try{
+    let arr2 = arr[0].split('=');
+    return arr2[1];
+  }catch(err){
+    console.log(err);
+  }
+  return null;
+}
 
 function SignUp(){
   let username = $('#username').val();

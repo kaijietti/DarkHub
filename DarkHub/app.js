@@ -82,7 +82,7 @@ server.on('request',function(request,response){
     })
   }
   else if(url === '/favicon.ico'){
-    callBackError(url,err,response);
+    callBackError(url,"",response);
   }
   else{
     let htmlname = url.substring(1);

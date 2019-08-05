@@ -56,6 +56,12 @@
             function preventFormSubmit(){
                 return false;
             }
+            window.onload = ()=>{
+                let username = getCookie();
+                if(username){
+                    window.location.href = './index';
+                }
+            }
         </script>
 
     </body>
