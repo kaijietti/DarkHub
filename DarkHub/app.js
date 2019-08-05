@@ -86,7 +86,15 @@ server.on('request',function(request,response){
   }
   else{
     let htmlname = url.substring(1);
-    fs.readFile('./'+htmlname+'.html','utf-8',function(err,data){
+    let pathname = '';
+
+    if(htmlname.substring(htmlname.length-5) === '.html'){
+      pathname = './' + htmlname;
+    }else{
+      pathname = './' + htmlname + '.html';
+    }
+
+    fs.readFile(pathname,'utf-8',function(err,data){
       if(err){
         callBackError(url,err,response);
       }else{
