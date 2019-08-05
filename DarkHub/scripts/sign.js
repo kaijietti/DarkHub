@@ -1,98 +1,116 @@
-function addcookies(username,time){   //add cookies for a user
+const url = ''  // backend port
+//type: 0 signup; 1 login
 
-    var exp = new Date();
-    exp.setDate(exp.getDate() + time);
-    document.cookie = "username = " + username+';expires='+exp+";path=/";
+function post_signup(urls,password,username){
+  // let signupSuc = true;
+  // let data = {
+  //   username  : username,
+  //   password  : password,
+  //   type      : 0
+  // }
+  // $.ajax({
+  //   data:data,
+  //   type:'POST',
+  //   url:urls,
+  //   success:function(result){
+  //     alert('Sign Up successfully.');
+  //     signupSuc = true;
+  //   },
+  //   error:function(xhr,txtstatus,errthrow){
+  //     alert('Failed.Maybe you can choose another password and try again.');
+  //     signupSuc = false;
+  //   }
+  // })
+  // return signupSuc;
+  return true;
 }
 
-function getCookie(username){
-    let arr = document.cookie.split(';');
-    for(let i = 0;i<arr.length;i++){
-        let arr2 = arr[i].split('=');
-        try{
-            if(arr2[1] == username){
-                return arr2[1];
-            }
-        }catch(err){
-            console.log(err);
-        }
+function post_login(urls,password,username){
+  // let loginSuc = true;
+  // let data = {
+  //   username : username,
+  //   password : password,
+  //   type     : 1
+  // }
+  // $.ajax({
+  //   data:data,
+  //   type:'POST',
+  //   url:urls,
+  //   success:function(result){
+  //     loginSuc = true;
+  //   },
+  //   error:function(xhr,txtstatus,errthrow){
+  //     loginSuc = false;
+  //     alert('Failed.Wrong username or password');
+  //   }
+  // })
+  // return loginSuc;
+  return true;
+}
+
+function checkConfirmTrue(password,confirm){
+  return password == confirm;
+}
+
+function legalInput(username,password){
+  let usernameMax = 15;
+  let usernameMin = 6;
+  let passwordMax = 20;
+  let passwordMin = 8;
+
+  let checkinput = false;
+  if(username.length > usernameMax || username.length < usernameMin){
+    checkinput = false;
+  }else if(password.length > passwordMax || password.length < passwordMin){
+    checkinput = false;
+  }else{
+    checkinput = true;
+  }
+
+  return checkinput;
+}
+
+function setCookie(username,time){
+  let exp = new Date();
+  exp.setDate(exp.getDate() + time);
+  document.cookie = 'username='+username+';path=/;expires='+exp;
+}
+
+
+function SignUp(){
+  let username = $('#username').val();
+  let password = $('#password').val();
+  let confirm  = $('#confirm').val();
+
+  if(!username || !password || !confirm){
+    return;
+  }
+  else if(!checkConfirmTrue(password,confirm)){
+    alert('Password is not the same as your confirm password');
+  }
+  else if(!legalInput(username,password)){
+    alert('illegal username or password');
+  }
+  else{   //post it to url
+    let postresult = post_signup(url,password,username);
+    if(postresult){
+      alert('Sign Up successfully.');
+      window.location.href = './sign';
     }
-    return null;
+  }
 }
 
-function removecookie(username){
-    addcookies(username,-1);
-}
+function Login(){
+  let username = $('#username_login').val();
+  let password = $('#username_login').val();
 
-function removeAllCookie(){
-    addcookies('fail',-1);
-}
-
-function getLoginedCookie(){
-    let arr = document.cookie.split(';');
-    try{
-        let arr2 = arr[0].split('=');
-        if((typeof arr2[1]) === undefined){
-            console.log(arr2[1]);
-            return null;
-        }
-        return arr2[1];
-    }catch(err){
-        console.log(err);
-    }
-    return null;
-}
-
-
-function getUserIcon() {//登录时头像，获取username时马上显示
-    let username = $('#userName').val();
-    //console.log('changing username to '+ username);
-    let url = '/imags/user/' + username + '.png';
-    $('#usericon').attr('src',url);
-}
-
-function signIn(){
-
-    let username = $("#userName").val();
-    let password = $("#userPass").val();
-    if(!username || !password) return;
-    let sql_pattern = /select|update|delete|truncate|join|union|exec|insert|drop|count|’|"|;|>|<|%/i;
-    if(sql_pattern.test(username) || sql_pattern.test(password)){
-        alert('Wrong input cannot be accepted.');
-        return;
-    }else{
-        let loginSuccess = true;
-        // post to : ...
-        /*
-            //post(use ajax)
-        let data = {
-            username:username,
-            password:password,
-        }
-        $.ajax({
-            data:data,
-            type:'POST',
-            url: .... ,
-            success:function(data){
-                loginSuccess = true;
-            },
-            error:function(request){
-                loginSuccess = false;
-            }
-        })
-        */
-        if(loginSuccess){
-            let userhome_url = './index.html';
-            // add coodies here:
-            addcookies(username,1);
-            window.location.href = userhome_url;
-            //console.log(getCookie(username));
-        }
-        else{
-            alert('用户名不存在或者密码错误!');
-        }
-    }
-}
-function signUp(){
-    window.location.href = './signup.html';
+  let postresult = post_login(url,password,username);
+  
+  if(postresult){
+    setCookie(username,1);
+    alert('Success ' + username + ' ' + password);
+    window.location.href = './index'
+  }else{
+    alert('Failed. Wrong username or password.')
+  }
 }
