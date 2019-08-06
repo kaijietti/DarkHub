@@ -255,6 +255,11 @@ footer a:hover{
     background: white;
 }
 
+.search-txt:focus {
+    width: 240px;
+    padding: 0 6px;
+}
+
 .search-btn {
     color: #e84118;
     float: right;
