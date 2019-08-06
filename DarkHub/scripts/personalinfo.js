@@ -48,12 +48,6 @@ function changeInfo(){
 }
 
 function getUserIcon(username){
-    let targetFile = '../imags/users/'+username+'.png'
-    let defaultFile = '../imags/usericon.png';
-    let file = new File(targetFile);
-    if(file.exists()){
-        return targetFile;
-    }else{
-        return defaultFile;
-    }
+    let url = '/imags/users/' + username + '.png';
+    return url;
 }

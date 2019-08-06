@@ -6,14 +6,8 @@ function addcookies(username,time){   //add cookies for a user
 }
 
 function getUserIcon(username){
-    let targetFile = '../imags/users/'+username+'.png'
-    let defaultFile = '../imags/usericon.png';
-    let file = new File(targetFile);
-    if(file.exists()){
-        return targetFile;
-    }else{
-        return defaultFile;
-    }
+    let url = '/imags/users/' + username + '.png';
+    return url;
 }
 
 function getCookie(username){

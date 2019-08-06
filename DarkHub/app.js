@@ -49,7 +49,17 @@ server.on('request',function(request,response){
     let imgname = url.substring(13);
     fs.readFile('./imags/users/'+imgname,'binary',function(err,data){
       if(err){
-        callBackError(url,err,response);
+        console.log('error when accessing ' + url + ' use default instand.');
+        fs.readFile('./imags/usericon.png','binary',function(err,data){
+          if(err){
+            callBackError('./imags/usericon.png',err,response);
+          }else{
+            console.log('--fix: accessing ' + './imags/usericon.png');
+            response.writeHead(200,{'content-type':'image/png'});
+            response.write(data,'binary');
+            response.end();
+          }
+        })
       }else{
         console.log('accessing ' + url);
         response.writeHead(200,{'content-type':'image/png'});
