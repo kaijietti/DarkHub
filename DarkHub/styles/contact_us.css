@@ -5,8 +5,9 @@
 }
 
 .contact-section {
-    background: url(../imags/contact-bg.jpg) no-repeat center;
+    /*background: url(../imags/contact-bg.jpg) no-repeat center;
     background-size: cover;
+    width: inherit;*/
     padding: 40px 0;
 }
 
