@@ -13,7 +13,6 @@ function post_signup(urls,password,username){
   //   type:'POST',
   //   url:urls,
   //   success:function(result){
-  //     alert('Sign Up successfully.');
   //     signupSuc = true;
   //   },
   //   error:function(xhr,txtstatus,errthrow){
