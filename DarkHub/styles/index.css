@@ -18,6 +18,7 @@ body{
 }
 
 .webicon {
+    cursor: pointer;
     float: left;
     /*position: absolute;
     top: 0;
@@ -26,18 +27,33 @@ body{
     height: 45px;
     line-height: 45px;
     padding:0 8px;
-    width: 100px;
+    width: 110px;
     display: flex;
     align-items: center;
 }
 
+.webicon-icon:hover{
+    height: 34px;
+    width: 34px;
+}
+
 .webicon-label{
+    cursor: pointer;
     color: #ddd;
 }
 
+.webicon-label:hover {
+    text-shadow: 0 0 5px white;
+}
+
 .webicon-icon {
+    cursor: pointer;
     height: 30px;
     width: 30px;
+}
+
+.webicon-icon:hover path {/*svg color*/
+    fill:#FF9800;
 }
 
 .nav_menu{
