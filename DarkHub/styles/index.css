@@ -17,7 +17,7 @@ body{
     box-shadow:  0px 3px 15px #212121;
 }
 
-.webicon {
+.webicon {/*website icon*/
     cursor: pointer;
     float: left;
     /*position: absolute;
@@ -217,3 +217,56 @@ footer a{
 footer a:hover{
     transform: translateZ(15px);
 }
+
+/*主页搜索按钮*/
+
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding:0;/*此时必须为0*/
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;/*伸缩效果参数*/
+}
+
+.search-box:hover > .search-txt{
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+    background: white;
+}
+
+.search-btn {
+    color: #e84118;
+    float: right;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+
