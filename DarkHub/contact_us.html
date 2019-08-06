@@ -114,12 +114,12 @@
         <div class="contact-section">
             <h1>Contact Us</h1>
             <div class="border"></div>
-            <form class="contact-form" action="contact-us.html" method="post">
-                <input type="text" class="contact-form-text" placeholder="Your name"/>
-                <input type="email" class="contact-form-text" placeholder="Your email"/>
-                <input type="text" class="contact-form-text" placeholder="Your phone"/>
-                <textarea class="contact-form-text" placeholder="Your message"></textarea>
-                <div class="contact-form-btn">Send</div>
+            <form class="contact-form" action="contact-us.html" method="post" onsubmit="return preventPost()">
+                <input type="text" class="contact-form-text" placeholder="Your name" id='ContactName'/>
+                <input type="email" class="contact-form-text" placeholder="Your email" id='ContactEmail'/>
+                <input type="text" class="contact-form-text" placeholder="Your phone" id='ContactPhone'/>
+                <textarea class="contact-form-text" placeholder="Your message" id='ContactMsg' onkeydown='enterTab(this)'></textarea>
+                <div class="contact-form-btn" onclick='sendContactInfo()'>Send</div>
             </form>
         </div>
         
@@ -144,6 +144,9 @@
                 obj.value += '\t';
                 event.returnValue = false;
             }
+        }
+        function preventPost(){
+            return true;
         }
     </script>
 </html>
