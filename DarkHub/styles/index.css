@@ -32,11 +32,6 @@ body{
     align-items: center;
 }
 
-.webicon-icon:hover{
-    height: 34px;
-    width: 34px;
-}
-
 .webicon-label{
     cursor: pointer;
     color: #ddd;
@@ -50,6 +45,11 @@ body{
     cursor: pointer;
     height: 30px;
     width: 30px;
+}
+
+.webicon-icon:hover{
+    height: 34px;
+    width: 34px;
 }
 
 .webicon-icon:hover path {/*svg color*/
