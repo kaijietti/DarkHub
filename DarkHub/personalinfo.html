@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link href="styles/index.css" rel="stylesheet"/>
+        <link href="styles/personlinfo.css" rel="stylesheet"/>
         <script src="./scripts/jquery.js"></script>
         <script src = "./scripts/index.js"></script>
         <script src="./scripts/personalinfo.js"></script>
@@ -98,19 +99,48 @@
                     </ul>
                 </li>
             </ul>
-
         </div>
         <!--add personal information here-->
-        <div>
-            <label for="username">Username:</label><input type="text" id = 'username' size = '20' disabled = 'true'><br>
-            <label for="sex">Sex:</label><input type="text" id = 'sex' size = '20'><br>
-            <label for="phone">Phone:</label><input type="text" id='phone' size = '20'><br>
-            <label for="address">Address:</label><input type="text" id = 'address' size = '100'><br>
-            <button onclick="changeInfo()">Change</button>
+        <div class="flip-container">
+            <div class="flip-card">
+
+                    <div class="info-box-front">
+                            <label class="info-label" for="username">Username:</label><br>
+                            <input class="info-input" type="text" id = 'username' disabled = 'true'><br>
+                            <label class="info-label" for="sex">Sex:</label><br>
+                            <input class="info-input" type="text" id = 'sex' ><br>
+                            <label class="info-label" for="phone">Phone:</label><br>
+                            <input class="info-input" type="text" id='phone'><br>
+                            <label class="info-label" for="address">Address:</label><br>
+                            <input class="info-input" type="text" id = 'address'><br>
+                            <div id="info-btn-back" class="info-btn" onclick="changeInfo()">
+                                Change Info
+                            </div>
+                        </div>
+
+                        
+                <div class="info-box-back">
+                    <h2>Your Information</h2>
+                    <label class="info-label" for="username">Username:</label><br>
+                    <input class="info-input" type="text" id = 'username' disabled = 'true'><br>
+                    <label class="info-label" for="sex">Sex:</label><br>
+                    <input class="info-input" type="text" id = 'sex' ><br>
+                    <label class="info-label" for="phone">Phone:</label><br>
+                    <input class="info-input" type="text" id='phone'><br>
+                    <label class="info-label" for="address">Address:</label><br>
+                    <input class="info-input" type="text" id = 'address'><br>
+                    <div id="info-btn-back" class="info-btn" onclick="">
+                        Change
+                    </div>
+                </div>
+
+                
+            </div>
         </div>
         <footer>
-            <a href="/contact_us">联系我们</a>
+            <a href="/contact_us">Contact Us</a>
         </footer>
+
     </body>
     <script>
         window.onload = () => {
