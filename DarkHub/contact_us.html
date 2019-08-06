@@ -67,7 +67,7 @@
                         <span class="box">
                             <span class="front">
                                 <div style="width: 48px; height: 48px; border-radius: 50%;border:1px solid white; margin: 0 auto;">
-                                    <img src="imags/usericon.png" width="40px" height="40px"/>
+                                    <img src="imags/usericon.png" width="40px" height="40px" id='usericon'/>
                                 </div>
                             </span>
                             <span class="back" id = 'username_text'>
@@ -77,7 +77,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#" class="three-d">
+                            <a href="/personalinfo" class="three-d">
                                  个人信息
                                 <span class="box">
                                     <span class="front">个人信息</span>
@@ -122,6 +122,7 @@
             }
             else{
                 document.getElementById('username_text').innerHTML = username;
+                document.getElementById('usericon').src = getUserIcon(username);
             }
         }
         function enterTab(obj){
