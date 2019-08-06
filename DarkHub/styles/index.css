@@ -39,6 +39,7 @@ body{
 
 .webicon-label:hover {
     text-shadow: 0 0 5px white;
+    text-transform: uppercase;
 }
 
 .webicon-icon {

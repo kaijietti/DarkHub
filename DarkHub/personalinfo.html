@@ -110,42 +110,37 @@
 
         </div>
         <!--add personal information here-->
-        <div class="flip-container">
-            <div class="flip-card">
+        
+        <div class="info-section">
+            <h1>Your information</h1>
+            <div class="border"></div>
+            <form class="info-form" action="personalinfo.html" method="post">
 
-                    <div class="info-box-front">
-                            <label class="info-label" for="username">Username:</label><br>
-                            <input class="info-input" type="text" id = 'username' disabled = 'true'><br>
-                            <label class="info-label" for="sex">Sex:</label><br>
-                            <input class="info-input" type="text" id = 'sex' ><br>
-                            <label class="info-label" for="phone">Phone:</label><br>
-                            <input class="info-input" type="text" id='phone'><br>
-                            <label class="info-label" for="address">Address:</label><br>
-                            <input class="info-input" type="text" id = 'address'><br>
-                            <div id="info-btn-back" class="info-btn" onclick="changeInfo()">
-                                Change Info
-                            </div>
-                        </div>
-
-                        
-                <div class="info-box-back">
-                    <h2>Your Information</h2>
-                    <label class="info-label" for="username">Username:</label><br>
-                    <input class="info-input" type="text" id = 'username' disabled = 'true'><br>
-                    <label class="info-label" for="sex">Sex:</label><br>
-                    <input class="info-input" type="text" id = 'sex' ><br>
-                    <label class="info-label" for="phone">Phone:</label><br>
-                    <input class="info-input" type="text" id='phone'><br>
-                    <label class="info-label" for="address">Address:</label><br>
-                    <input class="info-input" type="text" id = 'address'><br>
-                    <div id="info-btn-back" class="info-btn" onclick="">
-                        Change
-                    </div>
-                </div>
-
+                <div class="info-form-user">
+                    <img class="info-form-usericon" src="imags/usericon.png">
+                    <div class="info-form-white"></div>
+                    <div class="change-box">
+                        <svg t="1565101619122" class="change-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2713" width="200" height="200"><path d="M261.12 165.76l136.32 136.32-95.36 95.36-136.32-136.32a239.36 239.36 0 0 0 295.68 339.84l256 256a98.56 98.56 0 1 0 139.52-139.52l-256-256a239.36 239.36 0 0 0-339.84-295.68z" fill="#212121" p-id="2714"></path></svg>
+                     </div>
+                </div>  
                 
-            </div>
+                <input type="text" class="info-form-text" placeholder="Your name" disabled/>
+                <input type="email" class="info-form-text" placeholder="Your email"  disabled/>
+                <input type="text" class="info-form-text" placeholder="Your phone" disabled/>
+                <textarea class="info-form-text" placeholder="Your address"disabled ></textarea>
+                <div class="info-form-btn">Change</div>
+            </form>
         </div>
+        <!--
+            功能说明：
+            1.
+            头像修改在弹窗中进行，可以先跳过。2019.08.06
+            2.
+            进入页面显示未更改的个人信息，
+            按change按钮进入修改模式
+            同时按钮文字改为Done，h1改为changing information
+            在修改完后按下即是一次修改。
+        -->
         <footer>
             <a href="/contact_us">Contact Us</a>
         </footer>
