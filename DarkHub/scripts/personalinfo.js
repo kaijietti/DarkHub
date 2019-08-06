@@ -46,3 +46,8 @@ function changeInfo(){
     // })
     window.location.reload(true);   //F5
 }
+
+function getUserIcon(username){
+    let url = '/imags/users/' + username + '.png';
+    return url;
+}

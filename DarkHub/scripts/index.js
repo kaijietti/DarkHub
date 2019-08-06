@@ -5,6 +5,11 @@ function addcookies(username,time){   //add cookies for a user
     document.cookie = "username = " + username+';expires='+exp+";path=/";
 }
 
+function getUserIcon(username){
+    let url = '/imags/users/' + username + '.png';
+    return url;
+}
+
 function getCookie(username){
     let arr = document.cookie.split(';');
     for(let i = 0;i<arr.length;i++){
