@@ -102,12 +102,25 @@
 
         </div>
         <!-- this is the body of contect us-->
+        <!--
         <div style='text-align: center;'>
             <!--url:the backend should create a port to accept the content data-->
             <input type="text" placeholder="Title" id = 'title'><br>
             <textarea id="details" cols="50" rows="31" id='details' onkeydown="enterTab(this)" placeholder="Add your suggestions here..."></textarea><br>
             <input type="text" placeholder='How do we contect you? please add your email, phone or etc:' id = 'address' style="width:379px"><br>
             <button onclick='submit()'>Submit</button>
+        </div>
+        -->
+        <div class="contact-section">
+            <h1>Contact Us</h1>
+            <div class="border"></div>
+            <form class="contact-form" action="contact-us.html" method="post">
+                <input type="text" class="contact-form-text" placeholder="Your name"/>
+                <input type="email" class="contact-form-text" placeholder="Your email"/>
+                <input type="text" class="contact-form-text" placeholder="Your phone"/>
+                <textarea class="contact-form-text" placeholder="Your message"></textarea>
+                <div class="contact-form-btn">Send</div>
+            </form>
         </div>
         <!----------------end---------------->
         <footer>
