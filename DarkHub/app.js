@@ -33,7 +33,7 @@ server.on('request',function(request,response){
       }
     })
   }
-  else if(/^\/styles\/([a-z]|[A-Z]|[0-9])+.css$/.test(url)){
+  else if(/^\/styles\/([a-z]|[A-Z]|[0-9]|_)+.css$/.test(url)){
     let cssname = url.substring(8);
     fs.readFile('./styles/'+cssname,'utf-8',function(err,data){
       if(err){
@@ -81,7 +81,7 @@ server.on('request',function(request,response){
       }
     })
   }
-  else if(/^\/scripts\/([a-z]|[A-Z]|[0-9])+.js$/.test(url)){
+  else if(/^\/scripts\/([a-z]|[A-Z]|[0-9]|_)+.js$/.test(url)){
     let jsname = url.substring(9);
     fs.readFile('./scripts/' + jsname,'utf-8',function(err,data){
       if(err){
