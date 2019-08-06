@@ -66,7 +66,7 @@
                         <span class="box">
                             <span class="front">
                                 <div style="width: 48px; height: 48px; border-radius: 50%;border:1px solid white; margin: 0 auto;">
-                                    <img src="imags/usericon.png" width="40px" height="40px"/>
+                                    <img src="imags/usericon.png" width="40px" height="40px" id='usericon'/>
                                 </div>
                             </span>
                             <span class="back" id = 'username_text'>
@@ -121,6 +121,7 @@
             else{
                 document.getElementById('username_text').innerHTML = username;
                 document.getElementById('username').value = username;
+                document.getElementById('usericon').src = getUserIcon();
                 // post username and get its infomation:
                 // let url = '';
                 // $.ajax({

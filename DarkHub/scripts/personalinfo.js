@@ -46,3 +46,14 @@ function changeInfo(){
     // })
     window.location.reload(true);   //F5
 }
+
+function getUserIcon(username){
+    let targetFile = '../imags/users/'+username+'.png'
+    let defaultFile = '../imags/usericon.png';
+    let file = new File(targetFile);
+    if(file.exists()){
+        return targetFile;
+    }else{
+        return defaultFile;
+    }
+}

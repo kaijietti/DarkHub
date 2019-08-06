@@ -5,6 +5,17 @@ function addcookies(username,time){   //add cookies for a user
     document.cookie = "username = " + username+';expires='+exp+";path=/";
 }
 
+function getUserIcon(username){
+    let targetFile = '../imags/users/'+username+'.png'
+    let defaultFile = '../imags/usericon.png';
+    let file = new File(targetFile);
+    if(file.exists()){
+        return targetFile;
+    }else{
+        return defaultFile;
+    }
+}
+
 function getCookie(username){
     let arr = document.cookie.split(';');
     for(let i = 0;i<arr.length;i++){
