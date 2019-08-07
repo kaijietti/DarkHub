@@ -16,6 +16,9 @@ const databaseUsername = 'root';
 const databasePassword = 'OPENtextfile+123';
 /// database's name:
 const database = 'test';
+
+/// tablename:
+const main = 'main';
 const contact = 'contact';
 
 // add the required js here:
@@ -52,6 +55,7 @@ http.createServer(function(req,res){
     // do something here:
   }
   else{ // POST request:
+    console.log('post get.');
     var post = '';
     req.on('data',function(chunk){
       post += chunk;
@@ -59,86 +63,84 @@ http.createServer(function(req,res){
 
     req.on('end',function(){
       post = querystring.parse(post);
-      switch(post.type){     // type of post:
-        case 0:{
-          // signup
-          signup(connectsql,post,database,function(result){
-            if(result === 1){
-              // success:
-              res.writeHead(200,{'content-type':'text/html'});
-              res.end('<h1>Success!</h1>');
-              return;
-            }else{
-              // error occur:
-              res.writeHead(403,{'content-type':'text/plain'});
-              res.end(result);
-              return;
-            }
-          })
-          break;
-        }
-        case 1:{
-          // login
-          login(connectsql,post,database,function(result){
-            if(result === 0){
-              res.writeHead(403,{'content-type':'text/plain'});
-              res.end('Wrong username or password');
-              return;
-            }else if(result === 1){
-              res.writeHead(200,{'content-type':'text/plain'});
-              res.end('Success login');
-              return;
-            }
-          })
-          break;
-        }
-        case 2:{
-          // fill user information
-          addinfo(connectsql,post,database,function(result){
-            if(result === 1){
-              res.writeHead(200,{'content-type':'text/plain'});
-              res.end('Success post infomation.')
-            }else{
-              res.writeHead(403,{'content-type':'text/plain'});
-              res.end(result);
-            }
-          })
-          break;
-        }
-        case 3:{
-          // asking user information
-          askinfo(connectsql,post,database,function(err,result){
-            if(err){
-              console.log(err);
-              res.writeHead(403,{'content-type':'text/plain'});
-              res.end(err);
-            }else{
-              res.writeHead(200,{'content-type':'text/json'});
-              res.end(querystring.stringify(result));
-            }
-          })
-          break;
-        }
-        case 4:{
-          // contact us:
-          contactus(connectsql,post,contact,function(result){
-            if(result === 1){
-              // success:
-              console.log('send message');
-              res.writeHead(200,{'content-type':'text/plain'});
-              res.end('Success send message');
-            }else{
-              res.writeHead(403,{'content-type':'text/plain'});
-              res.end('Send message failed!');
-            }
-          })
-          break;
-        }
-        default:{
-          res.writeHead(403,{'content-type':'text/plain'});
-          res.end('not completed!');
-          break;
-        }
+      console.log(post.type);
+      if(post.type == 0){     // type of post:
+        // signup
+        signup(connectsql,post,main,function(result){
+          if(result === 1){
+            // success:
+            res.writeHead(200,{'content-type':'text/html'});
+            res.end('<h1>Success!</h1>');
+            return;
+          }else{
+            // error occur:
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end(result);
+            return;
+          }
+        })
+      }else if(post.type == 1){
+        // login
+        login(connectsql,post,main,function(result){
+          if(result === 0){
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end('Wrong username or password');
+            return;
+          }else if(result === 1){
+            res.writeHead(200,{'content-type':'text/plain'});
+            res.end('Success login');
+            return;
+          }else{
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end(result);
+            return;
+          }
+        })
+      }
+       else if(post.type == 2){
+        // fill user information
+        addinfo(connectsql,post,main,function(result){
+          if(result === 1){
+            res.writeHead(200,{'content-type':'text/plain'});
+            res.end('Success post infomation.');
+            return;
+          }else{
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end(result);
+            return;
+          }
+        })
+      }
+      else if(post.type == 3){
+        // asking user information
+        askinfo(connectsql,post,main,function(err,result){
+          if(err){
+            console.log(err);
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end(err);
+          }else{
+            res.writeHead(200,{'content-type':'text/json'});
+            res.end(querystring.stringify(result));
+          }
+        })
+      }
+      else if(post.type == 4){
+        // contact us:
+        contactus(connectsql,post,contact,function(result){
+          if(result === 1){
+            // success:
+            console.log('send message');
+            res.writeHead(200,{'content-type':'text/plain'});
+            res.end('Success send message');
+          }else{
+            res.writeHead(403,{'content-type':'text/plain'});
+            res.end('Send message failed!');
+          }
+        })
+      }
+      else{
+        res.writeHead(403,{'content-type':'text/plain'});
+        res.end('not completed!');
       }
     })
   }

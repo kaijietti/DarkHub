@@ -3,9 +3,9 @@ function login(connect,data,database,callback){
   let password = data.password;
 
   var loginConfirm = function(username,password,callback){
-    connect.query('select * from ' + database + ' where username = ? password = ?',[username,password],function(err,result){
+    connect.query('select * from ' + database + ' where username = ? and password = ?',[username,password],function(err,result){
       if(err){
-        console.log('cannot access mysql');
+        console.log('cannot access mysql - login');
         callback('cannot access mysql');
       }else{
         if(result.length > 0){

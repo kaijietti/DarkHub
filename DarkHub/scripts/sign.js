@@ -24,8 +24,7 @@ function post_signup(urls,password,username){
   return signupSuc;
 }
 
-function post_login(urls,password,username){
-  let loginSuc = true;
+function post_login(urls,password,username,callback){
   let data = {
     username : username,
     password : password,
@@ -37,14 +36,13 @@ function post_login(urls,password,username){
     url:urls,
     dataType:'text',
     success:function(result){
-      loginSuc = true;
+      callback(true);
     },
     error:function(xhr,txtstatus,errthrow){
-      loginSuc = false;
-      alert('Failed.Wrong username or password');
+      callback(false);
     }
   })
-  return loginSuc;
+  // return loginSuc;
 }
 
 function checkConfirmTrue(password,confirm){
@@ -112,14 +110,14 @@ function SignUp(){
 
 function Login(){
   let username = $('#username_login').val();
-  let password = $('#username_login').val();
+  let password = $('#password_login').val();
 
-  let postresult = post_login(urls,password,username);
-  
-  if(postresult){
-    setCookie(username,1);
-    window.location.href = './index'
-  }else{
-    alert('Failed. Wrong username or password.')
-  }
+  post_login(urls,password,username,function(result){
+    if(result){
+      setCookie(username,1);
+      window.location.href = './index';
+    }else{
+      alert('Failed. Wrong username or password.');
+    }
+  });
 }
