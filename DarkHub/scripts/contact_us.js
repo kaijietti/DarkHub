@@ -29,8 +29,6 @@ function sendContactInfo(){
   let contactPhone = $('#ContactPhone').val();
   let contactMsg = $('#ContactMsg').val();
 
-
-
   let data = {
     Name : contactName,
     Email : contactEmail,

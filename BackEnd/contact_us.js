@@ -1,8 +1,8 @@
 function contactus(connect,data,database,callback){
-  let name = data.name;
-  let phone = data.phone;
-  let email = data.email;
-  let message = data.message;
+  let name = data.Name;
+  let phone = data.Phone;
+  let email = data.Email;
+  let message = data.Msg;
   connect.query('insert into ' + database + ' (name,phone,email,message) values (?,?,?,?)',[name,phone,email,message],function(err,result){
     if(err){
       console.log('cannot access mysql');
