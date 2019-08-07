@@ -2,7 +2,7 @@
 
 ## language: Node.js
 ## default listening port: 8080
-# How to build the environment?
+# How to build the environment? (please view in VSCode)
   1. ensure node.js is added in your 'path'
     + detected: run 'node -v' in your terminal.
   2. ensure mysql is in your 'path'
