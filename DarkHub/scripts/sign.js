@@ -16,7 +16,7 @@ function post_signup(urls,password,username){
       signupSuc = true;
     },
     error:function(xhr,txtstatus,errthrow){
-      alert('Failed.Maybe you can choose another password and try again.');
+      alert('Failed.Maybe you can choose another username and try again.');
       signupSuc = false;
     }
   })
