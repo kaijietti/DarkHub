@@ -26,7 +26,7 @@ function info(){
     checkUser(username,function(result){
       if(result === 1){
         // success
-        connect.query('upload ' + database + ' SET name=? email=? phone=? address=?',[name,email,phone,address],function(err,result){
+        connect.query('update ' + database + ' SET name=? email=? phone=? address=? where username=?',[name,email,phone,address,username],function(err,result){
           if(err){
             console.log('update datas failed!');
             callback('update datas failed!')

@@ -54,7 +54,6 @@ http.createServer(function(req,res){
     // do something here:
   }
   else{ // POST request:
-    console.log('post get.');
     var post = '';
     req.on('data',function(chunk){
       post += chunk;
@@ -62,7 +61,6 @@ http.createServer(function(req,res){
 
     req.on('end',function(){
       post = querystring.parse(post);
-      console.log(post.type);
       if(post.type == 0){     // type of post:
         // signup
         signup(connectsql,post,main,function(result){
