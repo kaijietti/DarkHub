@@ -1,50 +1,48 @@
-const url = ''  // backend port
+const urls = ''  // backend port
 //type: 0 signup; 1 login
 
 function post_signup(urls,password,username){
-  // let signupSuc = true;
-  // let data = {
-  //   username  : username,
-  //   password  : password,
-  //   type      : 0
-  // }
-  // $.ajax({
-  //   data:data,
-  //   type:'POST',
-  //   url:urls,
-  //   success:function(result){
-  //     signupSuc = true;
-  //   },
-  //   error:function(xhr,txtstatus,errthrow){
-  //     alert('Failed.Maybe you can choose another password and try again.');
-  //     signupSuc = false;
-  //   }
-  // })
-  // return signupSuc;
-  return true;
+  let signupSuc = true;
+  let data = {
+    username  : username,
+    password  : password,
+    type      : 0
+  }
+  $.ajax({
+    data:data,
+    type:'POST',
+    url:urls,
+    success:function(result){
+      signupSuc = true;
+    },
+    error:function(xhr,txtstatus,errthrow){
+      alert('Failed.Maybe you can choose another password and try again.');
+      signupSuc = false;
+    }
+  })
+  return signupSuc;
 }
 
 function post_login(urls,password,username){
-  // let loginSuc = true;
-  // let data = {
-  //   username : username,
-  //   password : password,
-  //   type     : 1
-  // }
-  // $.ajax({
-  //   data:data,
-  //   type:'POST',
-  //   url:urls,
-  //   success:function(result){
-  //     loginSuc = true;
-  //   },
-  //   error:function(xhr,txtstatus,errthrow){
-  //     loginSuc = false;
-  //     alert('Failed.Wrong username or password');
-  //   }
-  // })
-  // return loginSuc;
-  return true;
+  let loginSuc = true;
+  let data = {
+    username : username,
+    password : password,
+    type     : 1
+  }
+  $.ajax({
+    data:data,
+    type:'POST',
+    url:urls,
+    success:function(result){
+      loginSuc = true;
+    },
+    error:function(xhr,txtstatus,errthrow){
+      loginSuc = false;
+      alert('Failed.Wrong username or password');
+    }
+  })
+  return loginSuc;
 }
 
 function checkConfirmTrue(password,confirm){

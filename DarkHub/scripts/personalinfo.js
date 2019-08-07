@@ -33,19 +33,17 @@ function changeInfo(){
 
     let changeSuc = false;
 
-    // $.ajax({
-    //     data:data,
-    //     type:'POST',
-    //     url:urls,
-    //     success:function(result){
-    //         changeSuc = true;
-    //     },
-    //     error:function(xhr,txtstatus,errthrow){
-    //         changeSuc = false;
-    //         console.log(errthrow);
-    //     }
-    // })
-    // return changeSuc;
-    return true;
-    //window.location.reload(true);
+    $.ajax({
+        data:data,
+        type:'POST',
+        url:urls,
+        success:function(result){
+            changeSuc = true;
+        },
+        error:function(xhr,txtstatus,errthrow){
+            changeSuc = false;
+            console.log(errthrow);
+        }
+    })
+    return changeSuc;
 }
