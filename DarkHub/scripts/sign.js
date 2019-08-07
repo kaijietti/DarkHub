@@ -1,8 +1,7 @@
 const urls = 'http://localhost:8080'  // backend port
 //type: 0 signup; 1 login
 
-function post_signup(urls,password,username){
-  let signupSuc = true;
+function post_signup(urls,password,username,callback){
   let data = {
     username  : username,
     password  : password,
@@ -14,11 +13,10 @@ function post_signup(urls,password,username){
     url:urls,
     dataType:'text',
     success:function(result){
-      signupSuc = true;
+      callback(true);
     },
     error:function(xhr,txtstatus,errthrow){
-      alert('Failed.Maybe you can choose another username and try again.');
-      signupSuc = false;
+      callback(false);
     }
   })
   return signupSuc;
@@ -99,11 +97,16 @@ function SignUp(){
     alert('illegal username or password');
   }
   else{   //post it to url
-    let postresult = post_signup(urls,password,username);
-    if(postresult){
-      alert('Sign Up successfully.');
-      window.location.href = './sign';
-    }
+    post_signup(urls,password,username,function(result){
+      if(result){
+        alert('Sign Up Successfully!');
+        window.location.href = './sign';
+      }else{
+        alert('Failed! Please change anther username and try again.');
+        $('#password').val('');
+        $('#confirm').val('')
+      }
+    });
   }
 }
 
