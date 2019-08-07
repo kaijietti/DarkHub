@@ -79,7 +79,7 @@
                                 </div>
                             </span>
                             <span class="back" id = 'username_text'>
-                                usernsame
+                                username
                             </span>
                         </span>
                     </a>
@@ -117,7 +117,7 @@
             <form class="info-form" action="personalinfo.html" method="post">
 
                 <div class="info-form-user">
-                    <img class="info-form-usericon" src="imags/usericon.png">
+                    <img class="info-form-usericon" src="imags/usericon.png" id='infoUserIcon'>
                     <div class="info-form-white"></div>
                     <div class="change-box">
                         <svg t="1565101619122" class="change-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2713" width="200" height="200"><path d="M261.12 165.76l136.32 136.32-95.36 95.36-136.32-136.32a239.36 239.36 0 0 0 295.68 339.84l256 256a98.56 98.56 0 1 0 139.52-139.52l-256-256a239.36 239.36 0 0 0-339.84-295.68z" fill="#212121" p-id="2714"></path></svg>
@@ -125,9 +125,9 @@
                 </div>  
                 
                 <input type="text" class="info-form-text" placeholder="Your name" disabled/>
-                <input type="email" class="info-form-text" placeholder="Your email"  disabled/>
-                <input type="text" class="info-form-text" placeholder="Your phone" disabled/>
-                <textarea class="info-form-text" placeholder="Your address"disabled ></textarea>
+                <input type="email" class="info-form-text" placeholder="Your email"/>
+                <input type="text" class="info-form-text" placeholder="Your phone"/>
+                <textarea class="info-form-text" placeholder="Your address"></textarea>
                 <div class="info-form-btn">Change</div>
             </form>
         </div>
@@ -155,7 +155,9 @@
             else{
                 document.getElementById('username_text').innerHTML = username;
                 document.getElementById('username').value = username;
-                document.getElementById('usericon').src = getUserIcon();
+                let src = getUserIcon();
+                document.getElementById('usericon').src = src;
+                document.getElementById('infoUserIcon').src = src;
                 // post username and get its infomation:
                 // let url = '';
                 // $.ajax({
