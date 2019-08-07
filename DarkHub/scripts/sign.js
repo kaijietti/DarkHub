@@ -117,6 +117,7 @@ function Login(){
       window.location.href = './index';
     }else{
       alert('Failed. Wrong username or password.');
+      $('#password_login').val('');
     }
   });
 }
