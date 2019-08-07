@@ -1,3 +1,5 @@
+const urls = ''
+
 function login(){
     try{
         let arr = document.cookie.split(';');
@@ -10,44 +12,40 @@ function login(){
     return '';
 }
 
-
-function changeInfo(){
-    // 注明：此处的username不能直接从前端的文本框里得到（避免恶意更改）,而应该从cookie中获得名字。
-    // 如果cookie无效，则表明无效提交。
-
-    let username = login();
-    let sex = document.getElementById('sex');
-    let phone = document.getElementById('phone');
-    let address = document.getElementById('address');
-
-    if(!username){
-        alert('修改失败！');
-        window.location.reload(true);
-    }
-    let data = {
-        username:username,
-        sex:sex,
-        phone:phone,
-        address:address
-    }
-    let url = ''
-    //post:
-    // $.ajax({
-    //     data:data,
-    //     url:url,
-    //     type:'POST',
-    //     success:(result)=>{
-    //         alert('修改成功！');
-    //     },
-    //     error:(xhr,errstatus,err)=>{
-    //         alert('修改失败！');
-    //         console.log(err);
-    //     }
-    // })
-    window.location.reload(true);   //F5
-}
-
 function getUserIcon(username){
     let url = '/imags/users/' + username + '.png';
     return url;
+}
+
+function changeInfo(){
+    let name = $('#name').val();
+    let email = $('#mail').val();
+    let phone = $('#phone').val();
+    let address = $('#address').val();
+
+    let data = {
+        name:name,
+        email:email,
+        phone:phone,
+        address:address,
+        type:2
+    }
+
+    let changeSuc = false;
+
+    // $.ajax({
+    //     data:data,
+    //     type:'POST',
+    //     url:urls,
+    //     success:function(result){
+    //         changeSuc = true;
+    //     },
+    //     error:function(xhr,txtstatus,errthrow){
+    //         changeSuc = false;
+    //         console.log(errthrow);
+    //     }
+    // })
+    // return changeSuc;
+    return true;
+    //window.location.reload(true);
 }

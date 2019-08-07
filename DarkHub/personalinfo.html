@@ -78,7 +78,7 @@
                                     <img src="imags/usericon.png" width="40px" height="40px" id='usericon'/>
                                 </div>
                             </span>
-                            <span class="back" id = 'username_text'>
+                            <span class="back" id = 'username'>
                                 username
                             </span>
                         </span>
@@ -124,11 +124,11 @@
                      </div>
                 </div>  
                 
-                <input type="text" class="info-form-text" placeholder="Your name" disabled/>
-                <input type="email" class="info-form-text" placeholder="Your email"/>
-                <input type="text" class="info-form-text" placeholder="Your phone"/>
-                <textarea class="info-form-text" placeholder="Your address"></textarea>
-                <div class="info-form-btn">Change</div>
+                <input type="text" class="info-form-text" placeholder="Your name" disabled='true' id='name'/>
+                <input type="email" class="info-form-text" placeholder="Your email" disabled='true' id='email'/>
+                <input type="text" class="info-form-text" placeholder="Your phone" disabled='true' id='phone'/>
+                <textarea class="info-form-text" placeholder="Your address" disabled='true' id='address'></textarea>
+                <div class="info-form-btn" onclick='ButtonClick()' id='changeButton'>Change</div>
             </form>
         </div>
         <!--
@@ -147,53 +147,36 @@
 
     </body>
     <script>
+        function ButtonClick(){
+            if(document.getElementById('changeButton').innerHTML == 'Change'){
+                document.getElementById('changeButton').innerHTML = 'Done';
+                document.getElementById('name').disabled = false;
+                document.getElementById('phone').disabled = false;
+                document.getElementById('email').disabled = false;
+                document.getElementById('address').disabled = false;
+            }else{
+                let changeResult = changeInfo();
+                if(changeResult){
+                    document.getElementById('changeButton').innerHTML = 'Change';
+                    alert('Change successfully');
+                    window.location.reload(true);
+                }else{
+                    alert('Change Failed');
+                }
+            }
+        }
+
+
         window.onload = () => {
             let username = login();
             if(!username){
                 window.location.href = '/';
             }
             else{
-                document.getElementById('username_text').innerHTML = username;
-                document.getElementById('username').value = username;
+                document.getElementById('username').innerHTML = username;
                 let src = getUserIcon();
                 document.getElementById('usericon').src = src;
                 document.getElementById('infoUserIcon').src = src;
-                // post username and get its infomation:
-                // let url = '';
-                // $.ajax({
-                //     data:{
-                //         username:username
-                //     },
-                //     url:url,
-                //     type:'POST',
-                //     dataType:'text',
-                //     success:function(result){   //假设返回一个JSON字符串
-                //         let username = '';
-                //         let address = '';
-                //         let phone = '';
-                //         let sex = '';
-
-                //         var reg1 = new RegExp('&','g');
-                //         var reg2 = new RegExp('=','g');
-
-                //         result = '{' + result + '}';
-                //         result = result.replace(reg1,'","').replace(reg2,'":"');
-                //         parse_result = JSON.parse(result);
-
-                //         username = parse_result.username;
-                //         address = parse_result.address;
-                //         phone = parse_result.phone;
-                //         sex = parse_result.sex;
-
-                //         document.getElementById('username').innerHTML = username;
-                //         document.getElementById('address').innerHTML = address;
-                //         document.getElementById('phone').innerHTML = phone;
-                //         document.getElementById('sex').innerHTML = sex;
-                //     },
-                //     error:function(xhr,txtstatus,errthrow){
-                //         console.log(errthrow);
-                //     }
-                // })
             }
         }
     </script>
