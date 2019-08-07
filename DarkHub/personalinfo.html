@@ -125,7 +125,7 @@
                 </div>  
                 
                 <input type="text" class="info-form-text" placeholder="Your name" disabled='true' id='name'/>
-                <input type="email" class="info-form-text" placeholder="Your email" disabled='true' id='email'/>
+                <input type="text" class="info-form-text" placeholder="Your email" disabled='true' id='email'/>
                 <input type="text" class="info-form-text" placeholder="Your phone" disabled='true' id='phone'/>
                 <textarea class="info-form-text" placeholder="Your address" disabled='true' id='address'></textarea>
                 <div class="info-form-btn" onclick='ButtonClick()' id='changeButton'>Change</div>
@@ -155,14 +155,15 @@
                 document.getElementById('email').disabled = false;
                 document.getElementById('address').disabled = false;
             }else{
-                let changeResult = changeInfo();
-                if(changeResult){
-                    document.getElementById('changeButton').innerHTML = 'Change';
-                    alert('Change successfully');
-                    window.location.reload(true);
-                }else{
-                    alert('Change Failed');
-                }
+                changeInfo(function(result){
+                    if(result){
+                        document.getElementById('changeButton').innerHTML = 'Change';
+                        alert('Change successfully');
+                        window.location.reload(true);
+                    }else{
+                        alert('Change Failed. Please wait and try again.');
+                    }
+                })
             }
         }
 
@@ -177,6 +178,7 @@
                 let src = getUserIcon();
                 document.getElementById('usericon').src = src;
                 document.getElementById('infoUserIcon').src = src;
+                getUserInfo();
             }
         }
     </script>
