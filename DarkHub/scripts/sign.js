@@ -70,6 +70,7 @@ function legalInput(username,password){
 }
 
 function setCookie(username,time){
+  alert('set cookie called');
   let exp = new Date();
   exp.setDate(exp.getDate() + time);
   document.cookie = 'username='+username+';path=/;expires='+exp;

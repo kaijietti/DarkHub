@@ -18,12 +18,14 @@ function getUserIcon(username){
 }
 
 function changeInfo(){
+    let username = login();
     let name = $('#name').val();
     let email = $('#mail').val();
     let phone = $('#phone').val();
     let address = $('#address').val();
 
     let data = {
+        username:username,
         name:name,
         email:email,
         phone:phone,
