@@ -33,7 +33,6 @@ var contactus = require('./contact_us.js').contactus;
 var http = require('http');
 var querystring = require('querystring');
 var mysql = require('mysql');
-var urls = require('url');
 
 // connnect to the database:
 var connectsql = mysql.createConnection({
