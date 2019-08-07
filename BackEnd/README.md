@@ -7,7 +7,7 @@
     + detected: run 'node -v' in your terminal.
   2. ensure mysql is in your 'path'
     + detected: run 'mysql' in your terminal.
-    + download and install: please view ''
+    + download and install: please view 'http://www.runoob.com/mysql/mysql-install.html'
   3. init:
     + create a new user of your mysql,
     + my default user is 'root', password is'OPENtextfile+123'(see ./backend.js)
