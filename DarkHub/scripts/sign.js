@@ -1,4 +1,4 @@
-const urls = ''  // backend port
+const urls = 'http://localhost:8080'  // backend port
 //type: 0 signup; 1 login
 
 function post_signup(urls,password,username){
@@ -12,6 +12,7 @@ function post_signup(urls,password,username){
     data:data,
     type:'POST',
     url:urls,
+    dataType:'text',
     success:function(result){
       signupSuc = true;
     },
@@ -34,6 +35,7 @@ function post_login(urls,password,username){
     data:data,
     type:'POST',
     url:urls,
+    dataType:'text',
     success:function(result){
       loginSuc = true;
     },
@@ -99,7 +101,7 @@ function SignUp(){
     alert('illegal username or password');
   }
   else{   //post it to url
-    let postresult = post_signup(url,password,username);
+    let postresult = post_signup(urls,password,username);
     if(postresult){
       alert('Sign Up successfully.');
       window.location.href = './sign';
@@ -111,7 +113,7 @@ function Login(){
   let username = $('#username_login').val();
   let password = $('#username_login').val();
 
-  let postresult = post_login(url,password,username);
+  let postresult = post_login(urls,password,username);
   
   if(postresult){
     setCookie(username,1);

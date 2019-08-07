@@ -1,4 +1,4 @@
-const urls = ''
+const urls = 'http://localhost:8080'
 
 function login(){
     try{
@@ -37,6 +37,7 @@ function changeInfo(){
         data:data,
         type:'POST',
         url:urls,
+        dataType:'text',
         success:function(result){
             changeSuc = true;
         },
