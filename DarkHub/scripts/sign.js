@@ -19,7 +19,6 @@ function post_signup(urls,password,username,callback){
       callback(false);
     }
   })
-  return signupSuc;
 }
 
 function post_login(urls,password,username,callback){
