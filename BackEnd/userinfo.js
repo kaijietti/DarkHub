@@ -26,6 +26,7 @@ function addInfo(connect,data,database,callback){
       // success
       connect.query('update ' + database + ' SET name=?,email=?,phone=?,address=? where username=?',[name,email,phone,address,username],function(err,result){
         if(err){
+          console.log(err);
           console.log('update datas failed!');
           callback('update datas failed!')
         }else{
