@@ -119,7 +119,6 @@ function Login(){
       setCookie(username,1);
       window.location.href = './index';
     }else{
-      alert('Failed. Wrong username or password.');
       $('#password_login').val('');
     }
   });
