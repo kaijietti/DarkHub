@@ -1,8 +1,7 @@
-const urls = ''  // backend port
+const urls = 'http://localhost:8080'  // backend port
 //type: 0 signup; 1 login
 
-function post_signup(urls,password,username){
-  let signupSuc = true;
+function post_signup(urls,password,username,callback){
   let data = {
     username  : username,
     password  : password,
@@ -12,19 +11,18 @@ function post_signup(urls,password,username){
     data:data,
     type:'POST',
     url:urls,
+    dataType:'text',
     success:function(result){
-      signupSuc = true;
+      callback(true);
     },
     error:function(xhr,txtstatus,errthrow){
-      alert('Failed.Maybe you can choose another username and try again.');
-      signupSuc = false;
+      callback(false);
     }
   })
   return signupSuc;
 }
 
-function post_login(urls,password,username){
-  let loginSuc = true;
+function post_login(urls,password,username,callback){
   let data = {
     username : username,
     password : password,
@@ -34,15 +32,15 @@ function post_login(urls,password,username){
     data:data,
     type:'POST',
     url:urls,
+    dataType:'text',
     success:function(result){
-      loginSuc = true;
+      callback(true);
     },
     error:function(xhr,txtstatus,errthrow){
-      loginSuc = false;
-      alert('Failed.Wrong username or password');
+      callback(false);
     }
   })
-  return loginSuc;
+  // return loginSuc;
 }
 
 function checkConfirmTrue(password,confirm){
@@ -99,24 +97,30 @@ function SignUp(){
     alert('illegal username or password');
   }
   else{   //post it to url
-    let postresult = post_signup(url,password,username);
-    if(postresult){
-      alert('Sign Up successfully.');
-      window.location.href = './sign';
-    }
+    post_signup(urls,password,username,function(result){
+      if(result){
+        alert('Sign Up Successfully!');
+        window.location.href = './sign';
+      }else{
+        alert('Failed! Please change anther username and try again.');
+        $('#password').val('');
+        $('#confirm').val('')
+      }
+    });
   }
 }
 
 function Login(){
   let username = $('#username_login').val();
-  let password = $('#username_login').val();
+  let password = $('#password_login').val();
 
-  let postresult = post_login(url,password,username);
-  
-  if(postresult){
-    setCookie(username,1);
-    window.location.href = './index'
-  }else{
-    alert('Failed. Wrong username or password.')
-  }
+  post_login(urls,password,username,function(result){
+    if(result){
+      setCookie(username,1);
+      window.location.href = './index';
+    }else{
+      alert('Failed. Wrong username or password.');
+      $('#password_login').val('');
+    }
+  });
 }
