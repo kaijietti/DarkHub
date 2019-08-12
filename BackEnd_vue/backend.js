@@ -59,7 +59,8 @@ http.createServer(function(req,res){
       post += chunk;
     });
     req.on('end',function(){
-      post = querystring.parse(post);
+      post = '[' + post + ']';
+      post = JSON.parse(post)[0];
       if(post.type == 0){     // type of post:
         // signup
         signup(connectsql,post,main,function(result){
