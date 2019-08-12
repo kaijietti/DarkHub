@@ -48,7 +48,7 @@ connectsql.connect();
 http.createServer(function(req,res){
   res.setHeader('Access-Control-Allow-Origin',"*");
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
-  console.log('receive');
+
   if(req.method.toLowerCase() == 'get') //GET request:
   {
     // do something here:
