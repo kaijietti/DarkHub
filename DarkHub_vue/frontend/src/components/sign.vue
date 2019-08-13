@@ -45,6 +45,11 @@ export default {
       signupConfirm: ''
     }
   },
+  created: function() {
+    if(this.$store.state.loginStatus == true){
+      this.$router.push({path:'/index'});
+    }
+  },
   methods: {
     gotoLogin: function() {
       document.getElementById('login-box').style.left = '0';
@@ -65,7 +70,7 @@ export default {
       }
       this.$axios.post(postUrl,JSON.stringify(data))
       .then(()=>{
-        alert('Signup success!');
+        alert('Sign Up success!')
         this.gotoLogin();
       })
       .catch((err)=>{
@@ -85,7 +90,6 @@ export default {
       }
       this.$axios.post(postUrl,JSON.stringify(data))
       .then((/*result*/)=>{
-        alert('login success!')
         this.$store.commit('login',this.loginUsername);
         this.$router.push({path:'index'});
       })

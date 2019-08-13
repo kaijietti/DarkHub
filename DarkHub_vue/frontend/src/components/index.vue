@@ -73,13 +73,13 @@
                           </div>
                       </span>
                       <span class="back" id = 'username_text'>
-                          usernsame
+                          {{this.$store.state.username}}
                       </span>
                   </span>
               </a>
               <ul>
                   <li>
-                      <a @click="goPath('#')" class="three-d">
+                      <a @click="goPath('/infomation')" class="three-d">
                             Infomation
                           <span class="box">
                               <span class="front">Infomation</span>
@@ -90,7 +90,7 @@
               </ul>
               <ul>
                   <li>
-                      <a @click="goPath('#')" class='three-d' onclick='logout()'>
+                      <a @click="Logout()" class='three-d' onclick='logout()'>
                           Log out
                           <span class = 'box'>
                               <span class = 'front'>Log out</span>
@@ -115,7 +115,7 @@
 
 
         <footer>
-            <a @click="goPath('#')">Contact Us</a>
+            <a @click="goPath('/contactus')">Contact Us</a>
         </footer>
 
   </div>
@@ -134,11 +134,15 @@ export default {
       if(url === '#'){
         return;
       }else{
-        alert('goto ' + url);
-        $this.$router.push({path:url});
+        this.$router.push({path:url});
       }
+    },
+    Logout: function() {
+        this.$store.commit('logout');
+        this.$router.push({path:'/'});
     }
-  }
+  },
+
 }
 </script>
 
