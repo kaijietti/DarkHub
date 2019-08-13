@@ -6,6 +6,7 @@ Vue.use(Router)
 import sign from '@/components/sign.vue'
 import index from '@/components/index.vue'
 import contactus from '@/components/contactus.vue'
+import information from '@/components/information.vue'
 
 export default new Router({
   routes: [
@@ -23,6 +24,11 @@ export default new Router({
       path: '/contactus',
       name: 'contactus',
       component: contactus
+    },
+    {
+      path: '/infomation',
+      name: 'infomation',
+      component: information,
     },
     {
       path: 'http://localhost:8080',

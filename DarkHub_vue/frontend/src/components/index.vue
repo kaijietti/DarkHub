@@ -79,8 +79,8 @@
               </a>
               <ul>
                   <li>
-                      <a @click="goPath('/infomation')" class="three-d">
-                            Infomation
+                      <a @click="goPath('/information')" class="three-d">
+                            Information
                           <span class="box">
                               <span class="front">Infomation</span>
                               <span class="back">Infomation</span>
