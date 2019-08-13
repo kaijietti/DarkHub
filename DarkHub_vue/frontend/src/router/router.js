@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import sign from '@/components/sign.vue'
 import index from '@/components/index.vue'
+import contactus from '@/components/contactus.vue'
 
 export default new Router({
   routes: [
@@ -17,6 +18,11 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/contactus',
+      name: 'contactus',
+      component: contactus
     },
     {
       path: 'http://localhost:8080',

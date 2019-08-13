@@ -82,7 +82,7 @@ export default {
         return;
       }
       let postUrl = this.$router.resolve({name:'post'})['resolved']['matched'][0].path;
-      console.log(postUrl);
+
       let data = {
         username: this.loginUsername,
         password: this.loginPassword,
