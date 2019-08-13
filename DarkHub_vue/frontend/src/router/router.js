@@ -26,8 +26,8 @@ export default new Router({
       component: contactus
     },
     {
-      path: '/infomation',
-      name: 'infomation',
+      path: '/information',
+      name: 'information',
       component: information,
     },
     {
