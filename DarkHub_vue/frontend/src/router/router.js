@@ -13,12 +13,12 @@ export default new Router({
     {
       path: '/',
       name: 'sign',
-      component: sign
+      component: sign,
     },
     {
       path: '/index',
       name: 'index',
-      component: index
+      component: index,
     },
     {
       path: '/contactus',
