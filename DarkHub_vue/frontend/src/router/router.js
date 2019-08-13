@@ -23,7 +23,7 @@ export default new Router({
     {
       path: '/contactus',
       name: 'contactus',
-      component: contactus
+      component: contactus,
     },
     {
       path: '/information',
