@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import sign from '@/components/sign.vue'
-
+import index from '@/components/index.vue'
 
 export default new Router({
   routes: [
@@ -14,8 +14,13 @@ export default new Router({
       component: sign
     },
     {
+      path: '/index',
+      name: 'index',
+      component: index
+    },
+    {
       path: 'http://localhost:8080',
       name: 'post',
-    }
+    },
   ]
 })
