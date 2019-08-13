@@ -57,7 +57,7 @@ export default {
         alert('Passwords not the same');
         return;
       }
-      let postUrl = 'http://localhost::8080';
+      let postUrl = this.$router.resolve({name:'post'})['resolved']['matched'][0].path;
       let data = {
         username: this.signupUsername,
         password: this.signupPassword,
@@ -76,7 +76,8 @@ export default {
       if(!this.loginUsername || !this.loginPassword){
         return;
       }
-      let postUrl = 'http://localhost:8080';
+      let postUrl = this.$router.resolve({name:'post'})['resolved']['matched'][0].path;
+      console.log(postUrl);
       let data = {
         username: this.loginUsername,
         password: this.loginPassword,

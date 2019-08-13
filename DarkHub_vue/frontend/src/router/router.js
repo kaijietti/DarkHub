@@ -13,5 +13,9 @@ export default new Router({
       name: 'sign',
       component: sign
     },
+    {
+      path: 'http://localhost:8080',
+      name: 'post',
+    }
   ]
 })
