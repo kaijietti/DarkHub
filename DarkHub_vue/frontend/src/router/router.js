@@ -22,5 +22,17 @@ export default new Router({
       path: 'http://localhost:8080',
       name: 'post',
     },
+    {
+      path: 'http://localhost:8080',
+      name: 'get',
+    },
+    {
+      path: 'http://localhost:8080',
+      name: 'put',
+    },
+    {
+      path: 'http://localhost:8080',
+      name: 'delete',
+    },
   ]
 })
