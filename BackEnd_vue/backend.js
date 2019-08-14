@@ -52,25 +52,30 @@ http.createServer(function(req,res){
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
   if(req.method.toLowerCase() == 'get') //GET request:
   {
-    var params = urls.parse(req.url, true).query;
-    if(params.type === 1){ // asking icon
+    let params = urls.parse(req.url, true).query;
+    if(params.type == 1){ // asking icon
       connectsql.query('select iconPath from main where username = ?', [params.username],function(err,result){
         if(err){
           res.writeHead(401,{'content-type':'text/plain'});
           res.end('401');
         } else {
-          let iconPath = result[0];
-          fs.readFile(iconPath,'binary',function(err,data){
-            if(err){
-              res.writeHead(404,{'content-type':'text/plain'});
-              res.end();
-            }
-            else{
-              res.writeHead(200,{'content-type':'image/png'});
-              res.write(data,'binary');
-              res.end();
-            }
-          })
+          if(result.length == 0){
+            res.writeHead(404,{'content-type':'text/plain'});
+            res.end('no such user');
+          }else{
+            let iconPath = result[0].iconPath;
+            fs.readFile(iconPath,'binary',function(err,data){
+              if(err){
+                res.writeHead(404,{'content-type':'text/plain'});
+                res.end();
+              }
+              else{
+                res.writeHead(200,{'content-type':'image/png'});
+                res.write(data,'binary');
+                res.end();
+              }
+            })
+          }
         }
       })
     }else{

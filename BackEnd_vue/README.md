@@ -26,7 +26,8 @@
         name varchar(100),  
         phone varchar(100),  
         email varchar(100),  
-        address varchar(2000),  
+        address varchar(2000), 
+        iconPath varchar(1000), 
         primary key(id)  
     )engine=innodb default charset=utf8;  
   6. create a new table called 'contact':  

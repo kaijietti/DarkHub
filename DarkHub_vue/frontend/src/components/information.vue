@@ -65,7 +65,7 @@
                 <span class="box">
                     <span class="front">
                         <div class="user">
-                            <img src="imags/usericon.png" width="40px" height="40px" id='usericon'/>
+                            <img :src="getUserIcon" width="40px" height="40px" id='usericon'/>
                         </div>
                     </span>
                     <span class="back" id = 'username_text'>
@@ -105,7 +105,7 @@
         <form class="info-form" action="personalinfo.html" method="post">
 
             <div class="info-form-user">
-                <img class="info-form-usericon" src="imags/usericon.png" id='infoUserIcon'>
+                <img class="info-form-usericon" :src="getUserIcon" id='infoUserIcon'>
                 <div class="info-form-white"></div>
                 <div class="change-box">
                     <svg t="1565101619122" class="change-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2713" width="200" height="200"><path d="M261.12 165.76l136.32 136.32-95.36 95.36-136.32-136.32a239.36 239.36 0 0 0 295.68 339.84l256 256a98.56 98.56 0 1 0 139.52-139.52l-256-256a239.36 239.36 0 0 0-339.84-295.68z" fill="#212121" p-id="2714"></path></svg>
@@ -136,20 +136,17 @@ export default {
       email: '',
       phone: '',
       address: '',
+      userIcon: '',
     }
   },
   created: function() {
-    console.log(this.$store.state.username);
     let data = {
       username: this.$store.state.username,
       type: 3,
     };
-    console.log(data.username);
     let postUrl = this.$router.resolve({name:'post'})['resolved']['matched'][0].path;
     this.$axios.post(postUrl,JSON.stringify(data))
       .then((result) => {
-        console.log(result);
-
         var reg1 = new RegExp('&','g');
         var reg2 = new RegExp('=','g');
 
@@ -167,7 +164,12 @@ export default {
   computed: {
     status: function() {
       return this.changable ? 'Save' : 'Change';
-    }
+    },
+    getUserIcon: function() {
+      let getUrl = this.$router.resolve({name:'get'})['resolved']['matched'][0].path;
+      let username = this.$store.state.username;
+      return `${getUrl}?type=1&username=${username}`;
+    },
   },
   methods: {
     goPath: function(url) {

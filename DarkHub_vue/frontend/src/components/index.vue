@@ -69,7 +69,7 @@
                   <span class="box">
                       <span class="front">
                           <div class="user">
-                              <img src="imags/usericon.png" width="40px" height="40px" id='usericon'/>
+                              <img :src="getUserIcon" width="40px" height="40px" id='usericon'/>
                           </div>
                       </span>
                       <span class="back" id = 'username_text'>
@@ -129,6 +129,14 @@ export default {
 
     }
   },
+  computed: {
+    getUserIcon: function() {
+      let getUrl = this.$router.resolve({name:'get'})['resolved']['matched'][0].path;
+      let username = this.$store.state.username;
+      return `${getUrl}?type=1&username=${username}`;
+    },
+  },
+
   methods: {
     goPath: function(url) {
       if(url === '#'){
