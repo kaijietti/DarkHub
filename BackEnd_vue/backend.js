@@ -33,6 +33,8 @@ var contactus = require('./contact_us.js').contactus;
 var http = require('http');
 var querystring = require('querystring');
 var mysql = require('mysql');
+var urls = require('url');
+var fs = require('fs');
 
 // connnect to the database:
 var connectsql = mysql.createConnection({
@@ -50,7 +52,31 @@ http.createServer(function(req,res){
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
   if(req.method.toLowerCase() == 'get') //GET request:
   {
-    // do something here:
+    var params = urls.parse(req.url, true).query;
+    if(params.type === 1){ // asking icon
+      connectsql.query('select iconPath from main where username = ?', [params.username],function(err,result){
+        if(err){
+          res.writeHead(401,{'content-type':'text/plain'});
+          res.end('401');
+        } else {
+          let iconPath = result[0];
+          fs.readFile(iconPath,'binary',function(err,data){
+            if(err){
+              res.writeHead(404,{'content-type':'text/plain'});
+              res.end();
+            }
+            else{
+              res.writeHead(200,{'content-type':'image/png'});
+              res.write(data,'binary');
+              res.end();
+            }
+          })
+        }
+      })
+    }else{
+      res.writeHead(403,{'content-type':'text/plain'});
+      res.end();
+    }
   }
   else{ // POST request:
     var post = '';

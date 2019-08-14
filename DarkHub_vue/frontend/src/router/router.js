@@ -12,6 +12,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: sign,
+    },
+    {
+      path: '/sign',
       name: 'sign',
       component: sign,
     },
