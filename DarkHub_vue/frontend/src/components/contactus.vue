@@ -140,6 +140,9 @@ export default {
         this.$router.push({path:'/'});
     },
     sendContactInfo: function() {
+      if(!this.ContactName || !this.ContactEmail || !this.ContactMsg || !this.ContactPhone){
+          return;
+      }
       let data = {
         Name : this.ContactName,
         Email : this.ContactEmail,
